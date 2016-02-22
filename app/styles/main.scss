@@ -1,0 +1,42 @@
+// bower:scss
+// endbower
+
+/*
+  cover-flow 974px
+  cover 700px
+  (974 - 700) / 11 = 25
+  (974 - 700) / n = 25
+*/
+
+$n: 12;
+$coverWidth: (974px - 700px)/($n - 1);
+
+.cover-flow{
+  width: 974px;
+  height: 444px;
+  background-color: #ddd;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+
+  .cover{ 
+    width: 700px;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    transition: left 1s;
+
+    @for $i from 1 through $n {
+      &.cover-#{$i} { 
+        background-color: rgb($i*20,$i*20,$i*20); 
+        left: calc(274px / (#{$n} - 1) * (#{$i} - 1) );
+        &.right{
+          left: calc(700px + (#{$coverWidth} * (#{$i} - 2)));
+        }
+      }
+    }
+
+  }
+
+}
+
