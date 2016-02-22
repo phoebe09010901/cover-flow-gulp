@@ -29,10 +29,6 @@ $coverWidth: (974px - 700px)/($n - 1);
     @for $i from 1 through $n {
       &.cover-#{$i} { 
         background-color: rgb($i*20,$i*20,$i*20); 
-        left: calc(274px / (#{$n} - 1) * (#{$i} - 1) );
-        &.right{
-          left: calc(700px + (#{$coverWidth} * (#{$i} - 2)));
-        }
       }
     }
 
